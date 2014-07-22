@@ -1,0 +1,73 @@
+#include<stdio.h>
+#define max 5                                     // size of the Stack
+struct stack
+{
+        int top,a[max];
+};
+void push(struct stack *p1)
+{
+        int x;
+        if(p1->top==max-1)                  // Condition for checking If Stack is Full
+       {
+               printf("stack overflow\n");
+               return;
+        }
+        p1->top++;                               //increment the top
+        printf("enter a no\n");
+        scanf("%d",&x);
+        p1->a[p1->top]=x;                     //insert element       
+ printf("%d succ. pushed\n",x);
+        return;
+}
+void pop(struct stack *p2)
+{
+        int y;
+        if(p2->top==-1)                         // Condition for checking If Stack is Empty           
+        {
+               printf("stack underflow\n");
+               return;
+        }
+        y=p2->a[p2->top];
+        p2->a[p2->top]=0;
+        printf("%d succ. poped\n",y);
+        p2->top--;
+        return;
+}
+void display(struct stack *p3)
+{
+        int i;
+        if(p3->top==-1)
+        {
+                 printf("stack is empty\n");
+                 return;
+        }
+        for(i=0;i<=p3->top;i++)
+        {
+                printf("%d\t",p3->a[i]);
+        }
+         return;
+}
+void main()
+{
+        struct stack s;
+         int c; s.top=-1;
+         do
+        {
+                 printf("\n1:push\n2:pop\n3:display\n4:exit\nchoice:");
+                 scanf("%d",&c);
+                 switch(c)
+                 {
+                        case 1:push(&s);
+                        break;
+                        case 2:pop(&s);
+                        break;
+                        case 3:display(&s);
+                        break;
+                        case 4:printf("pgm ends\n");
+                        break;
+                        default :printf("wrong choice\n");
+                        break;
+                 }
+         }while(c!=4); 
+}
+
